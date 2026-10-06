@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Мини-CRM для добавления и хранения лидов">
+  <title>Мини-CRM — Лиды</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="page-container">
+    <section class="panel" aria-labelledby="page-title">
+      <div class="panel__header">
+        <div>
+          <p class="eyebrow">Мини-CRM</p>
+          <h1 id="page-title">Добавление лида</h1>
+        </div>
+        <span class="lead-counter" id="leadCounter">Лидов: 0</span>
+      </div>
+
+      <form id="leadForm" class="lead-form" novalidate>
+        <div class="form-field">
+          <label for="clientName">Имя клиента <span aria-hidden="true">*</span></label>
+          <input id="clientName" name="clientName" type="text" autocomplete="name" placeholder="Например, Анна Петрова"
+            aria-describedby="clientNameError">
+          <small class="field-error" id="clientNameError"></small>
+        </div>
+
+        <div class="form-field">
+          <label for="phone">Телефон <span aria-hidden="true">*</span></label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Например, +7 999 123-45-67"
+            aria-describedby="phoneError">
+          <small class="field-error" id="phoneError"></small>
+        </div>
+
+        <div class="form-field">
+          <label for="source">Источник лида</label>
+          <select id="source" name="source">
+            <option value="Холодный">Холодный</option>
+            <option value="Тёплый">Тёплый</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="responsible">Ответственный</label>
+          <select id="responsible" name="responsible">
+            <option value="Лидоруб">Лидоруб</option>
+            <option value="МОП">МОП</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="stage">Этап сделки</label>
+          <select id="stage" name="stage">
+            <option value="Новый лид">Новый лид</option>
+            <option value="Квалифицирован">Квалифицирован</option>
+            <option value="Назначена консультация">Назначена консультация</option>
+            <option value="Отказ">Отказ</option>
+          </select>
+        </div>
+
+        <label class="checkbox-field" for="technicalTaskRequested">
+          <input id="technicalTaskRequested" name="technicalTaskRequested" type="checkbox">
+          <span>Запрошено ТЗ</span>
+        </label>
+
+        <div class="form-actions">
+          <button class="primary-button" type="submit">Сохранить</button>
+          <p class="form-message" id="formMessage" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
+
+    <section class="leads-section" aria-labelledby="leads-title">
+      <div class="section-heading">
+        <h2 id="leads-title">Сохранённые лиды</h2>
+        <p>Данные сохраняются в localStorage браузера.</p>
+      </div>
+
+      <div id="leadsList" class="leads-list"></div>
+      <p id="emptyState" class="empty-state">Пока нет сохранённых лидов.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
